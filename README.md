@@ -36,6 +36,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Contributer
 
-Mi Maijuni
+Mi Mai
 Chris
 Thomas
