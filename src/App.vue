@@ -1,7 +1,8 @@
 <template>
+  <HeaderComponent />
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/">Admin</router-link> |
+    <router-link to="/Attendee">Attendee</router-link>
   </nav>
   <router-view />
 </template>
