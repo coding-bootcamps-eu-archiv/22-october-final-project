@@ -19,8 +19,10 @@ export default {
       .then((response) => response.json())
       .then((stateFromApi) => {
         this.apiState = stateFromApi;
+        this.apiState.sort((a, b) => a.title.localeCompare(b.title));
       });
   },
+  computed: {},
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
