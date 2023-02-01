@@ -38,4 +38,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 Mi Mai
 Chris Oprisiu
-Thomas Hehe
+Benjamin Hill
+Thomas Salmann
