@@ -38,4 +38,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 Mi Mai
 Chris
-Thomas
+Benjamin Hill
+Thomas Salmann
