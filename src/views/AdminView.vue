@@ -1,12 +1,9 @@
 <template>
   <SearchbarComponent @click="searchTitle(dest)" />
   <ListComponent />
-  <ButtonComponent buttonText="Edit" />
-  <ButtonComponent buttonText="Delete" />
   <router-link to="/Create"
     ><ButtonComponent buttonText="Create"
   /></router-link>
-  <InputFormComponent />
 </template>
 <script>
 export default {

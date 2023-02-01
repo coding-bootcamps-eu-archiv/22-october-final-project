@@ -3,6 +3,11 @@
     <li v-for="entries in apiState" :key="entries.id">
       <div v-html="entries.title"></div>
       <div v-html="entries.description"></div>
+      <ButtonComponent buttonText="Edit" />
+      <ButtonComponent
+        @click="deleteListElement(entries.id)"
+        buttonText="Delete"
+      />
     </li>
   </ul>
 </template>
@@ -12,6 +17,7 @@ export default {
     // properties
     return {
       apiState: [],
+      currentId: undefined,
     };
   },
   async mounted() {
@@ -22,7 +28,30 @@ export default {
         this.apiState.sort((a, b) => a.title.localeCompare(b.title));
       });
   },
-  computed: {},
+  methods: {
+    async deleteListElement(id) {
+      this.currentId = id;
+      for (let item of this.apiState) {
+        if (item.id === id) {
+          await fetch("http://localhost:3000/entries/" + id, {
+            method: "DELETE",
+          });
+          const res = await fetch("http://localhost:3000/entries");
+          const jsonData = await res.json();
+          return (this.apiState = jsonData);
+          // const currentIndex = this.apiState.findIndex(
+          //   (element) => element.id === item.id
+          // );
+          // this.apiState.splice(currentIndex);
+        }
+      }
+    },
+  },
+  computed: {
+    currentUserId() {
+      return this.apiState.find((element) => element.id === this.currentId);
+    },
+  },
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
