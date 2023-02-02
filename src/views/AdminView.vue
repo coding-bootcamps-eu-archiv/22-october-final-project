@@ -48,6 +48,7 @@ export default {
           } else {
             this.searchResults.sort((a, b) => a.title.localeCompare(b.title));
           }
+          this.searchText = "";
         });
     },
     showAllEntries() {
