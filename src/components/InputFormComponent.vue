@@ -3,7 +3,7 @@
     <h2>Title</h2>
     <input type="text" v-model="title" />
     <h2>Description</h2>
-    <TiptapComponent v-editor.content="description" />
+    <TiptapComponent v-model="description" />
     <ButtonComponent
       buttonText="Submit & create new entry"
       @click="postDictionaryEntry"
@@ -34,12 +34,12 @@ export default {
         description: this.description,
         active: false,
       };
-      await fetch("http://localhost:3000/entries", {
+      await fetch(`${process.env.VUE_APP_API_URL}/entries`, {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(newEntry),
       });
-      const res = await fetch("http://localhost:3000/entries");
+      const res = await fetch(`${process.env.VUE_APP_API_URL}/entries`);
       const jsonData = await res.json();
       this.entries = jsonData;
       this.title = "";
