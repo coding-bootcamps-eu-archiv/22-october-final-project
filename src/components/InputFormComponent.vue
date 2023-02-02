@@ -29,6 +29,7 @@ export default {
   },
   methods: {
     async postDictionaryEntry() {
+      console.log(this.description.length);
       const newEntry = {
         title: this.title,
         description: this.description,
@@ -45,13 +46,10 @@ export default {
       this.title = "";
       this.description = "";
     },
-    getEditior() {
-      //   this.descriptipn = editor.getHTML();
-    },
   },
   computed: {
     isDisabled() {
-      return this.title.length === 0; //|| this.description.length === 0;
+      return this.title.length === 0 || this.description.length === 0;
     },
   },
 };
