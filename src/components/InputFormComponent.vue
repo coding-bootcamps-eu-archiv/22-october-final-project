@@ -3,10 +3,19 @@
     <h2>Title</h2>
     <input type="text" v-model="title" />
     <h2>Description</h2>
-    <TiptapComponent v-model="description" />
+    <TiptapComponent v-editor.content="description" />
+    <ButtonComponent
+      buttonText="Submit & create new entry"
+      @click="postDictionaryEntry"
+      :disabled="isDisabled"
+    />
     <router-link to="/"
-      ><ButtonComponent buttonText="Submit" @click="postDictionaryEntry"
+      ><ButtonComponent
+        buttonText="Submit & back to overview"
+        @click="postDictionaryEntry"
+        :disabled="isDisabled"
     /></router-link>
+    <router-link to="/"><ButtonComponent buttonText="Cancel" /></router-link>
   </form>
 </template>
 <script>
@@ -32,7 +41,17 @@ export default {
       });
       const res = await fetch("http://localhost:3000/entries");
       const jsonData = await res.json();
-      return (this.entries = jsonData);
+      this.entries = jsonData;
+      this.title = "";
+      this.description = "";
+    },
+    getEditior() {
+      //   this.descriptipn = editor.getHTML();
+    },
+  },
+  computed: {
+    isDisabled() {
+      return this.title.length === 0; //|| this.description.length === 0;
     },
   },
 };
