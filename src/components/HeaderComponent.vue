@@ -7,13 +7,7 @@
     <div id="header-after2"></div>
   </div>
 </template>
-<style scope>
-body {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-}
-
+<style>
 .content {
   --bg-color: #e5e5e5;
   --main-bg2-color: #6a1cc3;
@@ -21,9 +15,6 @@ body {
   --main-bg2-shadow: #8849cf;
   --text-color-grey: #00000099;
   font-family: "Montserrat", sans-serif;
-  position: relative;
-  max-width: 100%;
-  margin: auto;
   padding-bottom: 2em;
 }
 
@@ -31,10 +22,12 @@ h1 {
   text-transform: uppercase;
   font-size: 4em;
   color: var(--main-bg1-color);
+  text-align: center;
 }
 
 .sta-pad {
   padding: 2.5em;
+  margin: 0px;
   background-color: var(--main-bg2-color);
   filter: drop-shadow(0rem 0.65rem 0rem var(--main-bg2-shadow));
   display: flex;
