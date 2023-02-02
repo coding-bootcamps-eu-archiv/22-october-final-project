@@ -35,16 +35,6 @@ export default {
   },
   methods: {
     editEntry(id) {
-      // Edit Input muss erscheinen (display none wird inaktiv)
-      // title = title einfügen + description einfügen
-      // this.currentId = id;
-      // for (let item of this.apiState) {
-      //   if (item.id === id) {
-      //     console.log(item.title, this.title);
-      //     this.title = item.title;
-      //     this.description = item.description;
-      //   }
-      // }
       this.$router.push({ name: "Edit", params: { id: id } });
     },
     async deleteListElement(id) {
