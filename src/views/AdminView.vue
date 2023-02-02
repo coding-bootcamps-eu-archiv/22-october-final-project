@@ -14,7 +14,9 @@ export default {
   },
   methods: {
     async searchTitle(searchPhrase) {
-      return await fetch(`http://localhost:3000/entries?q=${searchPhrase}`)
+      return await fetch(
+        `${process.env.VUE_APP_API_URL}/entries?q=${searchPhrase}`
+      )
         .then((response) => response.json())
         .then((searchDataFromApi) => {
           this.apiState = searchDataFromApi;

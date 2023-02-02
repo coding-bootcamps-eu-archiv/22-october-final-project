@@ -9,23 +9,6 @@
         buttonText="Delete"
       />
       <!-- <EditFormComponent /> -->
-      <article>
-        <form @submit.prevent>
-          <h2>Title</h2>
-          <input type="text" v-model="title" />
-          <h2>Description</h2>
-          <TiptapComponent v-editor.content="description" />
-          <router-link to="/"
-            ><ButtonComponent
-              buttonText="Submit"
-              @click="putDictionaryEntry(entries.id)"
-              :disabled="isDisabled"
-          /></router-link>
-          <router-link to="/"
-            ><ButtonComponent buttonText="Cancel"
-          /></router-link>
-        </form>
-      </article>
     </li>
   </ul>
 </template>
@@ -43,7 +26,7 @@ export default {
     };
   },
   async mounted() {
-    return await fetch("http://localhost:3000/entries")
+    return await fetch(`${process.env.VUE_APP_API_URL}/entries`)
       .then((response) => response.json())
       .then((stateFromApi) => {
         this.apiState = stateFromApi;
@@ -51,14 +34,27 @@ export default {
       });
   },
   methods: {
+    editEntry(id) {
+      // Edit Input muss erscheinen (display none wird inaktiv)
+      // title = title einfügen + description einfügen
+      // this.currentId = id;
+      // for (let item of this.apiState) {
+      //   if (item.id === id) {
+      //     console.log(item.title, this.title);
+      //     this.title = item.title;
+      //     this.description = item.description;
+      //   }
+      // }
+      this.$router.push({ name: "Edit", params: { id: id } });
+    },
     async deleteListElement(id) {
       this.currentId = id;
       for (let item of this.apiState) {
         if (item.id === id) {
-          await fetch("http://localhost:3000/entries/" + id, {
+          await fetch(`${process.env.VUE_APP_API_URL}/entries` + id, {
             method: "DELETE",
           });
-          const res = await fetch("http://localhost:3000/entries");
+          const res = await fetch(`${process.env.VUE_APP_API_URL}/entries`);
           const jsonData = await res.json();
           return (this.apiState = jsonData);
           // const currentIndex = this.apiState.findIndex(
@@ -68,44 +64,10 @@ export default {
         }
       }
     },
-    editEntry(id) {
-      // Edit Input muss erscheinen (display none wird inaktiv)
-      // title = title einfügen + description einfügen
-
-      this.currentId = id;
-      for (let item of this.apiState) {
-        if (item.id === id) {
-          console.log(item.title, this.title);
-          this.title = item.title;
-          this.description = item.description;
-        }
-      }
-    },
-    async putDictionaryEntry(id) {
-      console.log(id, this.title);
-      const updatedEntry = {
-        title: this.title,
-        description: this.description,
-        active: false,
-      };
-      await fetch(`http://localhost:3000/entries/${id}`, {
-        method: "PUT",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(updatedEntry),
-      });
-      const res = await fetch("http://localhost:3000/entries");
-      const jsonData = await res.json();
-      return (this.entries = jsonData);
-      // this.title = "";
-      // this.description = "";
-    },
   },
   computed: {
     currentUserId() {
       return this.apiState.find((element) => element.id === this.currentId);
-    },
-    isDisabled() {
-      return this.title.length === 0; //|| this.description.length === 0;
     },
   },
 };
