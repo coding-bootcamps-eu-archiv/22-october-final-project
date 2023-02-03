@@ -3,12 +3,12 @@ import AdminView from "../views/AdminView.vue";
 
 const routes = [
   {
-    path: "/",
+    path: "/Admin",
     name: "Admin",
     component: AdminView,
   },
   {
-    path: "/Attendee",
+    path: "/",
     name: "Attendee",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
