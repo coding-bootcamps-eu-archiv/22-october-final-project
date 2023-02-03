@@ -3,8 +3,8 @@
   <form @submit.prevent>
     <input type="text" placeholder="Suchwort" v-model="searchText" />
     <ButtonComponent buttonText="Search" @click="searchTitle(searchText)" />
+    <ButtonComponent buttonText="Show All " @click="showAllEntries" />
   </form>
-  <ButtonComponent buttonText="Show All " @click="showAllEntries" />
   <div><ListComponent v-if="searchResults.length === 0" /></div>
   <ul>
     <li v-for="searchResult in searchResults" :key="searchResult.id">
