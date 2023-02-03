@@ -10,10 +10,9 @@
     <li v-for="searchResult in searchResults" :key="searchResult.id">
       <div v-html="searchResult.title"></div>
       <div v-html="searchResult.active"></div>
-      <div v-html="searchResult.modifiedAt"></div>
-      <ButtonComponent buttonText="Edit" @click="editEntry(entries.id)" />
+      <ButtonComponent buttonText="Edit" @click="editEntry(searchResult.id)" />
       <ButtonComponent
-        @click="deleteListElement(entries.id)"
+        @click="deleteListElement(searchResult.id)"
         buttonText="Delete"
       />
     </li>
@@ -29,15 +28,31 @@ export default {
     return {
       searchResults: [],
       searchText: "",
+      currentId: undefined,
     };
   },
   methods: {
+    editEntry(id) {
+      this.$router.push({ name: "Edit", params: { id: id } });
+    },
+    async deleteListElement(id) {
+      this.currentId = id;
+      for (let item of this.searchResults) {
+        if (item.id === id) {
+          await fetch(`${process.env.VUE_APP_API_URL}/entries/` + id, {
+            method: "DELETE",
+          });
+          const res = await fetch(`${process.env.VUE_APP_API_URL}/entries`);
+          const jsonData = await res.json();
+          return (this.searchResults = jsonData);
+        }
+      }
+    },
     async searchTitle(searchPhrase) {
       if (this.searchText.length === 0) {
         alert("Suchfeld ist leer!");
         this.searchResults = [];
       } else {
-        console.log("Test", searchPhrase.length);
         return await fetch(
           `${process.env.VUE_APP_API_URL}/entries?q=${searchPhrase}`
         )
@@ -55,6 +70,13 @@ export default {
     },
     showAllEntries() {
       return (this.searchResults = []);
+    },
+  },
+  computed: {
+    currentUserId() {
+      return this.searchResults.find(
+        (element) => element.id === this.currentId
+      );
     },
   },
 };

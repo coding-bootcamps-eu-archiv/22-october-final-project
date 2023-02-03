@@ -1,17 +1,10 @@
 <template>
-  <ul class="list">
-    <li class="list-item" v-for="entries in apiState" :key="entries.id">
-      <div class="text">
-        <div class="title" v-html="entries.title"></div>
-        <div class="description" v-html="entries.description"></div>
-      </div>
+  <ul>
+    <li v-for="entries in apiState" :key="entries.id">
+      <div v-html="entries.title"></div>
+      <div v-html="entries.description"></div>
+      <ButtonComponent buttonText="Edit" @click="editEntry(entries.id)" />
       <ButtonComponent
-        class="button"
-        buttonText="Edit"
-        @click="editEntry(entries.id)"
-      />
-      <ButtonComponent
-        class="button"
         @click="deleteListElement(entries.id)"
         buttonText="Delete"
       />
@@ -48,7 +41,7 @@ export default {
       this.currentId = id;
       for (let item of this.apiState) {
         if (item.id === id) {
-          await fetch(`${process.env.VUE_APP_API_URL}/entries` + id, {
+          await fetch(`${process.env.VUE_APP_API_URL}/entries/` + id, {
             method: "DELETE",
           });
           const res = await fetch(`${process.env.VUE_APP_API_URL}/entries`);
@@ -70,28 +63,4 @@ export default {
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.list {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 1rem 1.5rem;
-  padding: 0px;
-  margin: 2rem 10rem 2rem 10rem;
-}
-.list-item {
-  display: contents;
-}
-.text {
-  border-bottom: 2px solid black;
-  padding-bottom: 1rem;
-}
-.button {
-  align-self: center;
-  justify-self: end;
-}
-.title {
-  font-size: 1.5rem;
-  color: var(--color-primary);
-  font-weight: bold;
-}
-</style>
+<style scoped></style>
