@@ -1,5 +1,5 @@
 <template>
   <SearchbarComponent />
-  <ListComponent />
-  <ButtonComponent buttonText="Share" />
+  <!-- <ListComponent /> -->
+  <AttendeeViewList />
 </template>
