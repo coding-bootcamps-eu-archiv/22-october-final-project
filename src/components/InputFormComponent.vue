@@ -17,13 +17,15 @@
       @click="postDictionaryEntry"
       :disabled="isDisabled"
     />
-    <router-link to="/"
+    <router-link to="/Admin"
       ><ButtonComponent
         buttonText="Submit & back to overview"
         @click="postDictionaryEntry"
         :disabled="isDisabled"
     /></router-link>
-    <router-link to="/"><ButtonComponent buttonText="Cancel" /></router-link>
+    <router-link to="/Admin"
+      ><ButtonComponent buttonText="Cancel"
+    /></router-link>
   </form>
 </template>
 <script>
