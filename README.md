@@ -37,5 +37,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Contributer
 
 Mi Mai
-Chris
-Thomas
+Chris Oprisiu
+Benjamin Hill
+Thomas Salmann
