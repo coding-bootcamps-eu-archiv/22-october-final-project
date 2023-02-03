@@ -47,6 +47,7 @@
 <script>
 import { Editor, EditorContent } from "@tiptap/vue-3";
 import StarterKit from "@tiptap/starter-kit";
+import Link from "@tiptap/extension-link";
 
 export default {
   components: {
@@ -58,6 +59,7 @@ export default {
       editor: null,
     };
   },
+
   props: {
     modelValue: {
       type: String,
@@ -82,7 +84,12 @@ export default {
   },
   mounted() {
     this.editor = new Editor({
-      extensions: [StarterKit],
+      extensions: [
+        StarterKit,
+        Link.configure({
+          openOnClick: false,
+        }),
+      ],
       content: this.modelValue,
       onUpdate: () => {
         // HTML
@@ -92,6 +99,32 @@ export default {
         // this.$emit('update:modelValue', this.editor.getJSON())
       },
     });
+  },
+  methods: {
+    setLink() {
+      const previousUrl = this.editor.getAttributes("link").href;
+      const url = window.prompt("URL", previousUrl);
+
+      // cancelled
+      if (url === null) {
+        return;
+      }
+
+      // empty
+      if (url === "") {
+        this.editor.chain().focus().extendMarkRange("link").unsetLink().run();
+
+        return;
+      }
+
+      // update link
+      this.editor
+        .chain()
+        .focus()
+        .extendMarkRange("link")
+        .setLink({ href: url })
+        .run();
+    },
   },
 
   beforeUnmount() {
