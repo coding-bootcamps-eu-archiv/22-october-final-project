@@ -6,6 +6,7 @@
   </form>
   <!-- <ListComponent /> -->
   <AttendeeViewList v-if="filteredResults.length === 0" />
+  <h2 v-else>Search results:</h2>
   <ul>
     <li v-for="searchResult in filteredResults" :key="searchResult.id">
       <div v-html="searchResult.title"></div>

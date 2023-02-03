@@ -14,10 +14,12 @@
         id="entryStatus"
       />
       <label for="entryStatus">Active</label>
-      <router-link to="/"
+      <router-link to="/Admin"
         ><ButtonComponent buttonText="Submit" @click="putDictionaryEntry"
       /></router-link>
-      <router-link to="/"><ButtonComponent buttonText="Cancel" /></router-link>
+      <router-link to="/Admin"
+        ><ButtonComponent buttonText="Cancel"
+      /></router-link>
     </form>
   </article>
 </template>

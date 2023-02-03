@@ -5,7 +5,8 @@
     <ButtonComponent buttonText="Search" @click="searchTitle(searchText)" />
     <ButtonComponent buttonText="Show All " @click="showAllEntries" />
   </form>
-  <div><ListComponent v-if="searchResults.length === 0" /></div>
+  <ListComponent v-if="searchResults.length === 0" />
+  <h2 v-else>Search results:</h2>
   <ul>
     <li v-for="searchResult in searchResults" :key="searchResult.id">
       <div v-html="searchResult.title"></div>
