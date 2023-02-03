@@ -75,12 +75,18 @@ export default {
   display: grid;
   grid-template-columns: 1fr auto auto;
   gap: 1rem 1.5rem;
+  padding: 0px;
+  margin: 2rem 10rem 2rem 10rem;
 }
 .list-item {
   display: contents;
 }
+.text {
+  border-bottom: 2px solid black;
+  padding-bottom: 1rem;
+}
 .button {
-  align-self: start;
+  align-self: center;
   justify-self: end;
 }
 .title {
