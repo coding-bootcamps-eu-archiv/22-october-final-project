@@ -26,7 +26,11 @@ export default {
     return await fetch(`${process.env.VUE_APP_API_URL}/entries`)
       .then((response) => response.json())
       .then((stateFromApi) => {
-        this.apiState = stateFromApi;
+        for (let item of stateFromApi) {
+          if (item.active) {
+            this.apiState.push(item);
+          }
+        }
         this.apiState.sort((a, b) => a.title.localeCompare(b.title));
       });
   },

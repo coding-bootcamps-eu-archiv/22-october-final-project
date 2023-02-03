@@ -41,7 +41,7 @@ export default {
       const updatedEntry = {
         title: this.entry.title,
         description: this.entry.description,
-        active: false,
+        active: this.entry.active,
       };
       await fetch(
         `${process.env.VUE_APP_API_URL}/entries/` + this.$route.params.id,
