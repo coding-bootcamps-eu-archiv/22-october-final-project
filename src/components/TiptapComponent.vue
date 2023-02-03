@@ -1,4 +1,46 @@
 <template>
+  <div v-if="editor">
+    <button
+      @click="editor.chain().focus().toggleBold().run()"
+      :disabled="!editor.can().chain().focus().toggleBold().run()"
+      :class="{ 'is-active': editor.isActive('bold') }"
+    >
+      bold
+    </button>
+    <button
+      @click="editor.chain().focus().setParagraph().run()"
+      :class="{ 'is-active': editor.isActive('paragraph') }"
+    >
+      paragraph
+    </button>
+    <button
+      @click="editor.chain().focus().toggleBulletList().run()"
+      :class="{ 'is-active': editor.isActive('bulletList') }"
+    >
+      bullet list
+    </button>
+    <button @click="setLink" :class="{ 'is-active': editor.isActive('link') }">
+      setLink
+    </button>
+    <button
+      @click="editor.chain().focus().unsetLink().run()"
+      :disabled="!editor.isActive('link')"
+    >
+      unsetLink
+    </button>
+    <button
+      @click="editor.chain().focus().undo().run()"
+      :disabled="!editor.can().chain().focus().undo().run()"
+    >
+      undo
+    </button>
+    <button
+      @click="editor.chain().focus().redo().run()"
+      :disabled="!editor.can().chain().focus().redo().run()"
+    >
+      redo
+    </button>
+  </div>
   <editor-content :editor="editor" />
 </template>
 
