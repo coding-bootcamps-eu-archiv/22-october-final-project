@@ -5,9 +5,9 @@
     <ButtonComponent buttonText="Show All " @click="showAllEntries" />
   </form>
   <!-- <ListComponent /> -->
-  <AttendeeViewList v-if="searchResults.length === 0" />
+  <AttendeeViewList v-if="filteredResults.length === 0" />
   <ul>
-    <li v-for="searchResult in searchResults" :key="searchResult.id">
+    <li v-for="searchResult in filteredResults" :key="searchResult.id">
       <div v-html="searchResult.title"></div>
       <div v-html="searchResult.description"></div>
       <div>{{ new Date(searchResult.modifiedAt) }}</div>
@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       searchResults: [],
+      filteredResults: [],
       searchText: "",
     };
   },
@@ -39,14 +40,21 @@ export default {
             if (this.searchResults.length === 0) {
               alert("Kein Treffer gefunden!");
             } else {
-              this.searchResults.sort((a, b) => a.title.localeCompare(b.title));
+              for (let item of this.searchResults) {
+                if (item.active) {
+                  this.filteredResults.push(item);
+                  this.filteredResults.sort((a, b) =>
+                    a.title.localeCompare(b.title)
+                  );
+                }
+              }
             }
             this.searchText = "";
           });
       }
     },
     showAllEntries() {
-      return (this.searchResults = []);
+      return (this.filteredResults = []);
     },
   },
 };
