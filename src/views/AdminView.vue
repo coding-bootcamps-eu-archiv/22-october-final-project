@@ -35,21 +35,23 @@ export default {
     async searchTitle(searchPhrase) {
       if (this.searchText.length === 0) {
         alert("Suchfeld ist leer!");
+        this.searchResults = [];
+      } else {
+        console.log("Test", searchPhrase.length);
+        return await fetch(
+          `${process.env.VUE_APP_API_URL}/entries?q=${searchPhrase}`
+        )
+          .then((response) => response.json())
+          .then((searchDataFromApi) => {
+            this.searchResults = searchDataFromApi;
+            if (this.searchResults.length === 0) {
+              alert("Kein Treffer gefunden!");
+            } else {
+              this.searchResults.sort((a, b) => a.title.localeCompare(b.title));
+            }
+            this.searchText = "";
+          });
       }
-      console.log("Test", searchPhrase.length);
-      return await fetch(
-        `${process.env.VUE_APP_API_URL}/entries?q=${searchPhrase}`
-      )
-        .then((response) => response.json())
-        .then((searchDataFromApi) => {
-          this.searchResults = searchDataFromApi;
-          if (this.searchResults.length === 0) {
-            alert("Kein Treffer gefunden!");
-          } else {
-            this.searchResults.sort((a, b) => a.title.localeCompare(b.title));
-          }
-          this.searchText = "";
-        });
     },
     showAllEntries() {
       return (this.searchResults = []);
