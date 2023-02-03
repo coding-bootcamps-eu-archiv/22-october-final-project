@@ -4,6 +4,14 @@
     <input type="text" v-model="title" />
     <h2>Description</h2>
     <TiptapComponent v-model="description" />
+    <input
+      v-model="active"
+      @change="setStatus"
+      type="checkbox"
+      name="entryStatus"
+      id="entryStatus"
+    />
+    <label for="entryStatus">Set active</label>
     <ButtonComponent
       buttonText="Submit & create new entry"
       @click="postDictionaryEntry"
@@ -25,6 +33,7 @@ export default {
       title: "",
       description: "",
       entries: [],
+      active: false,
     };
   },
   methods: {
@@ -33,7 +42,7 @@ export default {
       const newEntry = {
         title: this.title,
         description: this.description,
-        active: false,
+        active: this.active,
       };
       await fetch(`${process.env.VUE_APP_API_URL}/entries`, {
         method: "POST",
@@ -45,6 +54,9 @@ export default {
       this.entries = jsonData;
       this.title = "";
       this.description = "";
+    },
+    setStatus() {
+      return !this.active;
     },
   },
   computed: {

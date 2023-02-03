@@ -6,6 +6,14 @@
       <input type="text" v-model="entry.title" />
       <h2>Description</h2>
       <TiptapComponent v-model="entry.description" />
+      <input
+        v-model="entry.active"
+        @change="setStatus"
+        type="checkbox"
+        name="entryStatus"
+        id="entryStatus"
+      />
+      <label for="entryStatus">Active</label>
       <router-link to="/"
         ><ButtonComponent buttonText="Submit" @click="putDictionaryEntry"
       /></router-link>
