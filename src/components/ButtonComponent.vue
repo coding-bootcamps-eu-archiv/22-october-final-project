@@ -19,7 +19,6 @@ button {
   background: #fbfbfb;
   box-shadow: 2px 2px 0px 0px #6a1cc3;
   padding: 5px 10px 5px 10px;
-  margin: 0rem 1rem 0rem 1rem;
   cursor: pointer;
   transition: all 0.5s;
 }

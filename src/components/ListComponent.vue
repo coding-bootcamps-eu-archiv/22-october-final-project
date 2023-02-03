@@ -1,10 +1,17 @@
 <template>
-  <ul>
-    <li v-for="entries in apiState" :key="entries.id">
-      <div v-html="entries.title"></div>
-      <div v-html="entries.description"></div>
-      <ButtonComponent buttonText="Edit" @click="editEntry(entries.id)" />
+  <ul class="list">
+    <li class="list-item" v-for="entries in apiState" :key="entries.id">
+      <div class="text">
+        <div class="title" v-html="entries.title"></div>
+        <div class="description" v-html="entries.description"></div>
+      </div>
       <ButtonComponent
+        class="button"
+        buttonText="Edit"
+        @click="editEntry(entries.id)"
+      />
+      <ButtonComponent
+        class="button"
         @click="deleteListElement(entries.id)"
         buttonText="Delete"
       />
@@ -63,4 +70,22 @@ export default {
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+.list {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem 1.5rem;
+}
+.list-item {
+  display: contents;
+}
+.button {
+  align-self: start;
+  justify-self: end;
+}
+.title {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+</style>
