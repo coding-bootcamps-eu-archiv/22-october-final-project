@@ -39,9 +39,31 @@ export default {
             this.searchResults = searchDataFromApi;
             if (this.searchResults.length === 0) {
               alert("Kein Treffer gefunden!");
-            } else {
-              this.searchResults.sort((a, b) => a.title.localeCompare(b.title));
             }
+            this.searchResults = [];
+            for (let item of searchDataFromApi) {
+              console.log(searchDataFromApi);
+              if (item.active) {
+                this.searchResults.push(item);
+                this.searchResults.sort((a, b) =>
+                  a.title.localeCompare(b.title)
+                );
+              } else {
+                alert("Kein Treffer gefunden!");
+              }
+            }
+            // if (this.searchResults.length === 0) {
+            //   alert("Kein Treffer gefunden!");
+            // } else {
+            //   for (let item of this.searchResults) {
+            //     if (item.active) {
+            //       this.filteredResults.push(item);
+            //       this.filteredResults.sort((a, b) =>
+            //         a.title.localeCompare(b.title)
+            //       );
+            //     }
+            //   }
+            // }
             this.searchText = "";
           });
       }
