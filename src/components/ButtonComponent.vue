@@ -21,6 +21,7 @@ button {
   padding: 5px 10px 5px 10px;
   cursor: pointer;
   transition: all 0.5s;
+  margin: 0px 5px 0px 5px;
 }
 button:hover {
   background-color: #6a1cc3;
