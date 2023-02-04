@@ -1,13 +1,22 @@
 <template>
   <ul>
     <li v-for="entries in apiState" :key="entries.id">
-      <div v-html="entries.title"></div>
-      <div v-html="entries.description"></div>
-      <ButtonComponent buttonText="Edit" @click="editEntry(entries.id)" />
-      <ButtonComponent
-        @click="deleteListElement(entries.id)"
-        buttonText="Delete"
-      />
+      <div class="entry-box left">
+        <h3 v-html="entries.title"></h3>
+        <p v-html="entries.description"></p>
+      </div>
+      <div>
+        <ButtonComponent
+          class="entry-box btn"
+          buttonText="Edit"
+          @click="editEntry(entries.id)"
+        />
+        <ButtonComponent
+          class="entry-box right btn"
+          @click="deleteListElement(entries.id)"
+          buttonText="Delete"
+        />
+      </div>
       <!-- <EditFormComponent /> -->
     </li>
   </ul>
@@ -63,4 +72,67 @@ export default {
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+* {
+  box-sizing: border-box;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+
+  /* max-width: 800px; */
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  border-block-end: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entry-box {
+  /* border: 5px solid red; */
+  margin-block: 16px;
+}
+
+.left {
+  margin-inline-start: 20px;
+}
+
+.right {
+  margin-inline-end: 20px;
+}
+
+h3,
+p {
+  /* border: 5px solid blue; */
+  margin: 0px;
+}
+
+h3 {
+  margin-block-end: 8px;
+  font-size: 16px;
+}
+
+p {
+  margin-block-start: 8px;
+}
+
+p {
+  font-size: 12px;
+}
+
+.date {
+  font-style: italic;
+}
+
+.btn {
+  max-height: 50px;
+}
+</style>
