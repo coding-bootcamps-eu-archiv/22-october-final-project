@@ -1,31 +1,35 @@
 <template>
   <form @submit.prevent>
     <h2>Title</h2>
-    <input type="text" v-model="title" />
+    <input class="title-input" type="text" v-model="title" />
     <h2>Description</h2>
-    <TiptapComponent v-model="description" />
-    <input
-      v-model="active"
-      @change="setStatus"
-      type="checkbox"
-      name="entryStatus"
-      id="entryStatus"
-    />
-    <label for="entryStatus">Set active</label>
-    <ButtonComponent
-      buttonText="Submit & create new entry"
-      @click="postDictionaryEntry"
-      :disabled="isDisabled"
-    />
-    <router-link to="/Admin"
-      ><ButtonComponent
-        buttonText="Submit & back to overview"
+    <div class="tiptap-input">
+      <TiptapComponent v-model="description" />
+    </div>
+    <div class="button-border">
+      <input
+        v-model="active"
+        @change="setStatus"
+        type="checkbox"
+        name="entryStatus"
+        id="entryStatus"
+      />
+      <label for="entryStatus">Active</label>
+      <ButtonComponent
+        buttonText="Submit/ New entry"
         @click="postDictionaryEntry"
         :disabled="isDisabled"
-    /></router-link>
-    <router-link to="/Admin"
-      ><ButtonComponent buttonText="Cancel"
-    /></router-link>
+      />
+      <router-link to="/Admin"
+        ><ButtonComponent
+          buttonText="Submit/ Overview"
+          @click="postDictionaryEntry"
+          :disabled="isDisabled"
+      /></router-link>
+      <router-link to="/Admin"
+        ><ButtonComponent buttonText="Cancel"
+      /></router-link>
+    </div>
   </form>
 </template>
 <script>
@@ -68,3 +72,30 @@ export default {
   },
 };
 </script>
+<style scoped>
+*,
+*:before,
+p:after {
+  box-sizing: border-box;
+  font-size: 18px;
+}
+h2 {
+  font-family: "Montserrat", sans-serif;
+}
+input,
+.tiptap-input {
+  border: 2px solid #6a1cc3;
+  position: relative;
+  margin-bottom: 24px;
+}
+.title-input {
+  width: 100%;
+}
+.button-border {
+  position: absolute;
+  right: 64px;
+}
+input {
+  font-family: Source Sans Pro;
+}
+</style>

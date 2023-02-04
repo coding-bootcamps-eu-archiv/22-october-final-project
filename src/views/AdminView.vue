@@ -5,19 +5,32 @@
     <ButtonComponent buttonText="Search" @click="searchTitle(searchText)" />
     <ButtonComponent buttonText="Show All " @click="showAllEntries" />
   </form>
-  <ListComponent v-if="searchResults.length === 0" />
-  <h2 v-else>Search results:</h2>
-  <ul>
-    <li v-for="searchResult in searchResults" :key="searchResult.id">
-      <div v-html="searchResult.title"></div>
-      <div v-html="searchResult.active"></div>
-      <ButtonComponent buttonText="Edit" @click="editEntry(searchResult.id)" />
-      <ButtonComponent
-        @click="deleteListElement(searchResult.id)"
-        buttonText="Delete"
-      />
-    </li>
-  </ul>
+  <div class="grid-container" v-if="searchResults.length === 0">
+    <ListComponent v-if="searchResults.length === 0" />
+  </div>
+  <div v-else class="list">
+    <h2>Search results:</h2>
+    <ul>
+      <li v-for="searchResult in searchResults" :key="searchResult.id">
+        <div>
+          <h3 v-html="searchResult.title"></h3>
+          <p v-html="searchResult.active"></p>
+        </div>
+        <div>
+          <ButtonComponent
+            class="entry-box btn"
+            buttonText="Edit"
+            @click="editEntry(searchResult.id)"
+          />
+          <ButtonComponent
+            class="entry-box right btn"
+            @click="deleteListElement(searchResult.id)"
+            buttonText="Delete"
+          />
+        </div>
+      </li>
+    </ul>
+  </div>
   <!-- //v-if="searchResult.length === 0" -->
   <router-link to="/Create"
     ><ButtonComponent buttonText="Create"
@@ -82,3 +95,59 @@ export default {
   },
 };
 </script>
+<style scoped>
+.list {
+  margin-inline: 64px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  border-block-end: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entry-box {
+  /* border: 5px solid red; */
+  margin-block: 16px;
+}
+
+.left {
+  margin-inline-start: 20px;
+}
+
+.right {
+  margin-inline-end: 20px;
+}
+
+h3,
+p {
+  /* border: 5px solid blue; */
+  margin: 0px;
+}
+
+h3 {
+  margin-block-end: 8px;
+  font-size: 16px;
+}
+
+p {
+  margin-block-start: 8px;
+}
+
+p {
+  font-size: 12px;
+}
+
+.date {
+  font-style: italic;
+}
+
+.btn {
+  max-height: 50px;
+}
+</style>
