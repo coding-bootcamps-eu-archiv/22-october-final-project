@@ -5,16 +5,26 @@
     <ButtonComponent buttonText="Show All " @click="showAllEntries" />
   </form>
   <!-- <ListComponent /> -->
-  <AttendeeViewList v-if="searchResults.length === 0" />
-  <h2 v-else>Search results:</h2>
-  <ul>
-    <li v-for="searchResult in searchResults" :key="searchResult.id">
-      <div v-html="searchResult.title"></div>
-      <div v-html="searchResult.description"></div>
-      <div>{{ new Date(searchResult.modifiedAt) }}</div>
-      <ButtonComponent buttonText="Share" @click="shareItem" />
-    </li>
-  </ul>
+  <div class="grid-container" v-if="searchResults.length === 0">
+    <AttendeeViewList class="list" />
+  </div>
+  <div v-else class="list">
+    <h2>Search results:</h2>
+    <ul>
+      <li v-for="searchResult in searchResults" :key="searchResult.id">
+        <div class="entry-box left">
+          <h3 v-html="searchResult.title"></h3>
+          <p v-html="searchResult.description"></p>
+          <p>{{ new Date(searchResult.modifiedAt) }}</p>
+        </div>
+        <ButtonComponent
+          class="entry-box right btn"
+          buttonText="Share"
+          @click="shareItem"
+        />
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
 export default {
@@ -42,7 +52,6 @@ export default {
             }
             this.searchResults = [];
             for (let item of searchDataFromApi) {
-              console.log(searchDataFromApi);
               if (item.active) {
                 this.searchResults.push(item);
                 this.searchResults.sort((a, b) =>
@@ -74,3 +83,60 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.list {
+  margin-inline: 64px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  border-block-end: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entry-box {
+  /* border: 5px solid red; */
+  margin-block: 16px;
+}
+
+.left {
+  margin-inline-start: 20px;
+}
+
+.right {
+  margin-inline-end: 20px;
+}
+
+h3,
+p {
+  /* border: 5px solid blue; */
+  margin: 0px;
+}
+
+h3 {
+  margin-block-end: 8px;
+  font-size: 16px;
+}
+
+p {
+  margin-block-start: 8px;
+}
+
+p {
+  font-size: 12px;
+}
+
+.date {
+  font-style: italic;
+}
+
+.btn {
+  max-height: 50px;
+}
+</style>
