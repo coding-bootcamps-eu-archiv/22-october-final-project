@@ -5,10 +5,10 @@
     <ButtonComponent buttonText="Show All " @click="showAllEntries" />
   </form>
   <!-- <ListComponent /> -->
-  <AttendeeViewList v-if="filteredResults.length === 0" />
+  <AttendeeViewList v-if="searchResults.length === 0" />
   <h2 v-else>Search results:</h2>
   <ul>
-    <li v-for="searchResult in filteredResults" :key="searchResult.id">
+    <li v-for="searchResult in searchResults" :key="searchResult.id">
       <div v-html="searchResult.title"></div>
       <div v-html="searchResult.description"></div>
       <div>{{ new Date(searchResult.modifiedAt) }}</div>
@@ -21,7 +21,6 @@ export default {
   data() {
     return {
       searchResults: [],
-      filteredResults: [],
       searchText: "",
     };
   },
@@ -40,22 +39,37 @@ export default {
             this.searchResults = searchDataFromApi;
             if (this.searchResults.length === 0) {
               alert("Kein Treffer gefunden!");
-            } else {
-              for (let item of this.searchResults) {
-                if (item.active) {
-                  this.filteredResults.push(item);
-                  this.filteredResults.sort((a, b) =>
-                    a.title.localeCompare(b.title)
-                  );
-                }
+            }
+            this.searchResults = [];
+            for (let item of searchDataFromApi) {
+              console.log(searchDataFromApi);
+              if (item.active) {
+                this.searchResults.push(item);
+                this.searchResults.sort((a, b) =>
+                  a.title.localeCompare(b.title)
+                );
+              } else {
+                alert("Kein Treffer gefunden!");
               }
             }
+            // if (this.searchResults.length === 0) {
+            //   alert("Kein Treffer gefunden!");
+            // } else {
+            //   for (let item of this.searchResults) {
+            //     if (item.active) {
+            //       this.filteredResults.push(item);
+            //       this.filteredResults.sort((a, b) =>
+            //         a.title.localeCompare(b.title)
+            //       );
+            //     }
+            //   }
+            // }
             this.searchText = "";
           });
       }
     },
     showAllEntries() {
-      return (this.filteredResults = []);
+      return (this.searchResults = []);
     },
   },
 };
