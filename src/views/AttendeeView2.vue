@@ -1,4 +1,24 @@
 <template>
-  <h2>Create new Dictionary entries</h2>
-  <InputFormComponent />
+  <h2>CREATE NEW DICTIONARY ENTRIES</h2>
+  <article>
+    <InputFormComponent />
+  </article>
 </template>
+<style scoped>
+*,
+*:before,
+p:after {
+  box-sizing: border-box;
+  font-size: 18px;
+}
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  color: #6a1cc3;
+  padding-left: 64px;
+  margin-top: 72px;
+}
+article {
+  margin: 40px 64px 24px 64px;
+}
+</style>
