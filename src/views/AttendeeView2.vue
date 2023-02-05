@@ -13,10 +13,10 @@ p:after {
 }
 h2 {
   font-family: "Montserrat", sans-serif;
-  font-size: 1.5rem;
+  font-size: 36px;
   color: #6a1cc3;
   padding-left: 64px;
-  margin-top: 72px;
+  margin-top: 80px;
 }
 article {
   margin: 40px 64px 24px 64px;

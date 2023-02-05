@@ -101,6 +101,7 @@ export default {
   position: absolute;
   right: 20px;
 }
+
 .list {
   margin-inline: 64px;
 }

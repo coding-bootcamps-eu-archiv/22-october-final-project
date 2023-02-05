@@ -92,12 +92,45 @@ export default {
 };
 </script>
 <style scoped>
+.grid-container {
+  margin: 0px;
+  padding: 0px;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+
+  /* max-width: 800px; */
+}
+
+ul {
+  /* list-style-type: none; */
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  width: 40%;
+}
+
 .list {
-  margin-inline: 64px;
+  margin-top: 124px;
 }
 
 ul {
   list-style-type: none;
+}
+
+h2 {
+  margin-bottom: 56px;
+
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  width: 40%;
 }
 
 li {
@@ -105,19 +138,13 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-inline: 20px;
+  margin-bottom: 16px;
 }
 
 .entry-box {
   /* border: 5px solid red; */
-  margin-block: 16px;
-}
-
-.left {
-  margin-inline-start: 20px;
-}
-
-.right {
-  margin-inline-end: 20px;
+  margin-block: 24px;
 }
 
 h3,
@@ -128,15 +155,12 @@ p {
 
 h3 {
   margin-block-end: 8px;
-  font-size: 16px;
+  font-size: 32px;
 }
 
 p {
-  margin-block-start: 8px;
-}
-
-p {
-  font-size: 12px;
+  margin-block-start: 12px;
+  font-size: 20px;
 }
 
 .date {
@@ -146,6 +170,11 @@ p {
 .btn {
   max-height: 50px;
 }
+
+form {
+  margin-top: 80px;
+}
+
 .container {
   left: 50%;
   transform: translateX(-50%);
@@ -163,6 +192,11 @@ p {
   margin: 0 auto;
   display: block;
 }
+
+#search-input:focus {
+  outline: 0.5px solid #6a1cc3;
+}
+
 ::placeholder {
   color: #6a1cc3;
   opacity: 0.5;
@@ -177,6 +211,7 @@ p {
   fill: #6a1cc3;
 }
 .button-position {
+  margin-top: 16px;
   display: flex;
   justify-content: center;
 }

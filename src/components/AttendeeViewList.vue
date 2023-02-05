@@ -76,6 +76,8 @@ export default {
 }
 
 .grid-container {
+  margin: 0px;
+  padding: 0px;
   display: grid;
   grid-template-columns: 1fr;
   justify-content: center;
@@ -84,27 +86,32 @@ export default {
 }
 
 ul {
-  list-style-type: none;
+  /* list-style-type: none; */
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  width: 40%;
 }
 
 li {
+  /* margin-block: 8px; */
   border-block-end: 1px solid black;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-inline: 20px;
+  margin-bottom: 16px;
 }
 
 .entry-box {
   /* border: 5px solid red; */
-  margin-block: 16px;
-}
-
-.left {
-  margin-inline-start: 20px;
-}
-
-.right {
-  margin-inline-end: 20px;
+  margin-block: 24px;
 }
 
 h3,
@@ -115,15 +122,12 @@ p {
 
 h3 {
   margin-block-end: 8px;
-  font-size: 16px;
+  font-size: 32px;
 }
 
 p {
-  margin-block-start: 8px;
-}
-
-p {
-  font-size: 12px;
+  margin-block-start: 12px;
+  font-size: 20px;
 }
 
 .date {

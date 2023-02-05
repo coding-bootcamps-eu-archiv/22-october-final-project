@@ -84,6 +84,7 @@ p:after {
 }
 h2 {
   font-family: "Montserrat", sans-serif;
+  font-size: 26px;
 }
 input,
 .tiptap-input {
