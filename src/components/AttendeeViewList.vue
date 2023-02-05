@@ -8,7 +8,6 @@
           <p class="date">{{ new Date(entries.modifiedAt) }}</p>
         </div>
         <!-- <EditFormComponent /> -->
-        <ButtonComponent class="entry-box right btn" buttonText="Share" />
       </li>
     </ul>
   </div>

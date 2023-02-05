@@ -43,11 +43,6 @@
           <p v-html="searchResult.description"></p>
           <p>{{ new Date(searchResult.modifiedAt) }}</p>
         </div>
-        <ButtonComponent
-          class="entry-box right btn"
-          buttonText="Share"
-          @click="shareItem"
-        />
       </li>
     </ul>
   </div>
