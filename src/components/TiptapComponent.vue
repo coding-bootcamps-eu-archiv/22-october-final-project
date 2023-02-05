@@ -137,10 +137,6 @@ export default {
 };
 </script>
 <style scoped>
-.ProseMirror-focused:focus-visible {
-  outline: none;
-}
-
 button {
   display: inline-block;
   font-family: Source Sans Pro;
