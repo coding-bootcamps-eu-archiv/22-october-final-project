@@ -41,7 +41,11 @@
       redo
     </button>
   </div>
-  <editor-content :editor="editor" />
+  <editor-content
+    class="description-field"
+    v-model="content"
+    :editor="editor"
+  />
 </template>
 
 <script>
@@ -90,7 +94,7 @@ export default {
           openOnClick: false,
         }),
       ],
-      content: this.modelValue,
+      content: "<p>Texteingabe</p>",
       onUpdate: () => {
         // HTML
         this.$emit("update:modelValue", this.editor.getHTML());
@@ -133,6 +137,10 @@ export default {
 };
 </script>
 <style scoped>
+.ProseMirror-focused:focus-visible {
+  outline: none;
+}
+
 button {
   display: inline-block;
   font-family: Source Sans Pro;
@@ -146,8 +154,13 @@ button {
   cursor: pointer;
   transition: all 0.5s;
 }
+
 button:hover {
   background-color: #6a1cc3;
   color: #fbfbfb;
+}
+
+.description-field:focus {
+  border: 5x dashed red;
 }
 </style>
