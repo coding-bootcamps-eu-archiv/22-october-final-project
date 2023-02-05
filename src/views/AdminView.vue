@@ -1,11 +1,15 @@
 <template>
   <!-- <SearchbarComponent v-model="searchText" @click="searchTitle(searchText)" /> -->
+  <router-link to="/Create"
+    ><ButtonComponent class="create" buttonText="Create"
+  /></router-link>
   <form @submit.prevent>
     <input type="text" placeholder="Suchwort" v-model="searchText" />
     <ButtonComponent buttonText="Search" @click="searchTitle(searchText)" />
     <ButtonComponent buttonText="Show All " @click="showAllEntries" />
   </form>
-  <div class="grid-container" v-if="searchResults.length === 0">
+
+  <div v-if="searchResults.length === 0">
     <ListComponent v-if="searchResults.length === 0" />
   </div>
   <div v-else class="list">
@@ -32,9 +36,6 @@
     </ul>
   </div>
   <!-- //v-if="searchResult.length === 0" -->
-  <router-link to="/Create"
-    ><ButtonComponent buttonText="Create"
-  /></router-link>
 </template>
 <script>
 export default {
@@ -96,6 +97,10 @@ export default {
 };
 </script>
 <style scoped>
+.create {
+  position: absolute;
+  right: 20px;
+}
 .list {
   margin-inline: 64px;
 }
