@@ -146,4 +146,38 @@ p {
 .btn {
   max-height: 50px;
 }
+.container {
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  width: 40%;
+}
+
+#search-input {
+  width: 95%;
+  position: relative;
+  padding: 20px;
+  height: 10px;
+  border: 2px solid #6a1cc3;
+  border-radius: 0px;
+  margin: 0 auto;
+  display: block;
+}
+::placeholder {
+  color: #6a1cc3;
+  opacity: 0.5;
+}
+#lupe {
+  position: absolute;
+  right: 0;
+  top: 55%;
+  transform: translateY(-50%);
+  bottom: 0;
+  margin-right: 10px;
+  fill: #6a1cc3;
+}
+.button-position {
+  display: flex;
+  justify-content: center;
+}
 </style>
