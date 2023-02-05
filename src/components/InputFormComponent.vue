@@ -18,13 +18,14 @@
         Active</label
       >
       <ButtonComponent
-        buttonText="Submit/ New entry"
+        class="new-entry"
+        buttonText="New entry"
         @click="postDictionaryEntry"
         :disabled="isDisabled"
       />
       <router-link to="/Admin"
         ><ButtonComponent
-          buttonText="Submit/ Overview"
+          buttonText="Submit"
           @click="postDictionaryEntry"
           :disabled="isDisabled"
       /></router-link>
@@ -142,5 +143,9 @@ input[type="checkbox"]::before {
 }
 input[type="checkbox"]:checked::before {
   transform: scale(1);
+}
+
+.new-entry {
+  font-size: 18px;
 }
 </style>
