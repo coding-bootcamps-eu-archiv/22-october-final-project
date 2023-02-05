@@ -61,7 +61,6 @@ export default {
         alert("Suchfeld ist leer!");
         this.searchResults = [];
       } else {
-        console.log("Test", searchPhrase.length);
         return await fetch(
           `${process.env.VUE_APP_API_URL}/entries?q=${searchPhrase}`
         )
@@ -78,22 +77,10 @@ export default {
                 this.searchResults.sort((a, b) =>
                   a.title.localeCompare(b.title)
                 );
-              } else {
-                alert("Kein Treffer gefunden!");
+                // } else {
+                //   alert("Kein Treffer gefunden!");
               }
             }
-            // if (this.searchResults.length === 0) {
-            //   alert("Kein Treffer gefunden!");
-            // } else {
-            //   for (let item of this.searchResults) {
-            //     if (item.active) {
-            //       this.filteredResults.push(item);
-            //       this.filteredResults.sort((a, b) =>
-            //         a.title.localeCompare(b.title)
-            //       );
-            //     }
-            //   }
-            // }
             this.searchText = "";
           });
       }
