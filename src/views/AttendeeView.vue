@@ -35,7 +35,7 @@
     <AttendeeViewList class="list" />
   </div>
   <div v-else class="list">
-    <h2>Search results:</h2>
+    <h2 class="search-results">Search results:</h2>
     <ul>
       <li v-for="searchResult in searchResults" :key="searchResult.id">
         <div class="entry-box left">
@@ -102,6 +102,15 @@ export default {
   /* max-width: 800px; */
 }
 
+.search-results {
+  font-size: 26px;
+}
+@media screen and (max-width: 768px) {
+  .search-results {
+    font-size: 14px;
+  }
+}
+
 ul {
   /* list-style-type: none; */
   left: 50%;
@@ -119,9 +128,19 @@ ul {
 .list {
   margin-top: 124px;
 }
+@media screen and (max-width: 768px) {
+  .list {
+    margin-top: 36px;
+  }
+}
 
 ul {
   list-style-type: none;
+}
+@media screen and (max-width: 768px) {
+  ul {
+    width: 80%;
+  }
 }
 
 h2 {
@@ -132,7 +151,12 @@ h2 {
   position: relative;
   width: 40%;
 }
-
+@media screen and (max-width: 768px) {
+  h2 {
+    margin-bottom: 8px;
+    width: 80%;
+  }
+}
 li {
   border-block-end: 1px solid black;
   display: flex;
@@ -140,6 +164,12 @@ li {
   align-items: center;
   padding-inline: 20px;
   margin-bottom: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .list {
+    margin-top: 36px;
+  }
 }
 
 .entry-box {
@@ -157,18 +187,26 @@ h3 {
   margin-block-end: 8px;
   font-size: 32px;
 }
+@media screen and (max-width: 768px) {
+  h3 {
+    margin-block-end: 8px;
+    font-size: 16px;
+  }
+}
 
 p {
   margin-block-start: 12px;
   font-size: 20px;
 }
+@media screen and (max-width: 768px) {
+  p {
+    margin-block-start: 12px;
+    font-size: 12px;
+  }
+}
 
 .date {
   font-style: italic;
-}
-
-.btn {
-  max-height: 50px;
 }
 
 form {
@@ -181,16 +219,28 @@ form {
   position: relative;
   width: 40%;
 }
+@media screen and (max-width: 768px) {
+  .container {
+    width: 80%;
+  }
+}
 
 #search-input {
   width: 95%;
   position: relative;
   padding: 20px;
-  height: 10px;
+  height: 50px;
   border: 2px solid #6a1cc3;
   border-radius: 0px;
   margin: 0 auto;
   display: block;
+}
+@media screen and (max-width: 768px) {
+  #search-input {
+    padding-block: 8px;
+    font-size: 16px;
+    height: 50px;
+  }
 }
 
 #search-input:focus {
@@ -203,16 +253,36 @@ form {
 }
 #lupe {
   position: absolute;
-  right: 0;
+  right: 5px;
   top: 55%;
   transform: translateY(-50%);
   bottom: 0;
-  margin-right: 10px;
+  margin-right: 20px;
   fill: #6a1cc3;
 }
+@media screen and (max-width: 768px) {
+  #lupe {
+    right: 10px;
+
+    margin-right: 20px;
+  }
+}
+@media screen and (max-width: 320px) {
+  #lupe {
+    right: 10px;
+
+    margin-right: 10px;
+  }
+}
+
 .button-position {
   margin-top: 16px;
   display: flex;
   justify-content: center;
+}
+@media screen and (max-width: 768px) {
+  .button-position {
+    margin-top: 12px;
+  }
 }
 </style>

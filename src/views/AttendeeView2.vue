@@ -18,6 +18,11 @@ h2 {
   padding-left: 64px;
   margin-top: 80px;
 }
+@media screen and (max-width: 768px) {
+  h2 {
+    font-size: 16px;
+  }
+}
 article {
   margin: 40px 64px 24px 64px;
 }

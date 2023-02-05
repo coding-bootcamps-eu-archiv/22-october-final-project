@@ -98,6 +98,11 @@ ul {
   position: relative;
   width: 40%;
 }
+@media screen and (max-width: 768px) {
+  ul {
+    width: 80%;
+  }
+}
 
 li {
   /* margin-block: 8px; */
@@ -107,6 +112,11 @@ li {
   align-items: center;
   padding-inline: 20px;
   margin-bottom: 16px;
+}
+@media screen and (max-width: 768px) {
+  li {
+    margin-bottom: 12px;
+  }
 }
 
 .entry-box {
@@ -124,17 +134,25 @@ h3 {
   margin-block-end: 8px;
   font-size: 32px;
 }
+@media screen and (max-width: 768px) {
+  h3 {
+    margin-block-end: 8px;
+    font-size: 16px;
+  }
+}
 
 p {
   margin-block-start: 12px;
   font-size: 20px;
 }
+@media screen and (max-width: 768px) {
+  p {
+    margin-block-start: 12px;
+    font-size: 12px;
+  }
+}
 
 .date {
   font-style: italic;
-}
-
-.btn {
-  max-height: 50px;
 }
 </style>

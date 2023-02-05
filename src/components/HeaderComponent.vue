@@ -8,6 +8,9 @@
   </div>
 </template>
 <style>
+* {
+  box-sizing: border-box;
+}
 .content {
   --bg-color: #e5e5e5;
   --main-bg2-color: #6a1cc3;
@@ -24,6 +27,12 @@ h1 {
   color: var(--main-bg1-color);
   text-align: center;
 }
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 16px;
+    margin: 0px;
+  }
+}
 
 .sta-pad {
   padding: 2.5em;
@@ -33,6 +42,12 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .sta-pad {
+    padding: 0px;
+    padding-block-start: 40px;
+  }
 }
 
 #header-after2 {
