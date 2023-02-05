@@ -9,15 +9,17 @@
         <TiptapComponent v-model="entry.description" />
       </div>
       <div class="button-border">
-        <input
-          class="checkbox-input"
-          v-model="entry.active"
-          @change="setStatus"
-          type="checkbox"
-          name="entryStatus"
-          id="entryStatus"
-        />
-        <label for="entryStatus">Active</label>
+        <label class="checkbox-active" for="entryStatus">
+          <input
+            class="checkbox-input"
+            v-model="entry.active"
+            @change="setStatus"
+            type="checkbox"
+            name="entryStatus"
+            id="entryStatus"
+          />
+          Active</label
+        >
         <router-link to="/Admin"
           ><ButtonComponent buttonText="Submit" @click="putDictionaryEntry"
         /></router-link>
@@ -96,13 +98,59 @@ h2 {
   margin-top: 72px;
 }
 .button-border {
+  display: flex;
   position: absolute;
   right: 64px;
 }
 .title-input {
   width: 100%;
+  padding-left: 1rem;
 }
 input {
   font-family: Source Sans Pro;
+}
+.checkbox-active {
+  color: #6a1cc3;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #6a1cc3;
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+.checkbox-input {
+  color: #6a1cc3;
+}
+input[type="text"]:focus {
+  outline: 1px solid #6a1cc3;
 }
 </style>
