@@ -43,11 +43,12 @@
           <p v-html="searchResult.description"></p>
           <p>{{ new Date(searchResult.modifiedAt) }}</p>
         </div>
-        <ButtonComponent
-          class="entry-box right btn"
-          buttonText="Share"
+
+        <!--
+          <ButtonComponent class="entry-box right btn"
+          buttonText="Share" 
           @click="shareItem"
-        />
+        />-->
       </li>
     </ul>
   </div>
@@ -126,7 +127,7 @@ li {
 }
 
 .entry-box {
-  /* border: 5px solid red; */
+  border: 5px solid red;
   margin-block: 16px;
 }
 
