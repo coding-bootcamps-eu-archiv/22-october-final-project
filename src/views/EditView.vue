@@ -20,7 +20,7 @@
           />
           Active</label
         >
-        <router-link to="/Admin"
+        <router-link :disabled="isDisabled" to="/Admin"
           ><ButtonComponent buttonText="Submit" @click="putDictionaryEntry"
         /></router-link>
         <router-link to="/Admin"
@@ -47,18 +47,32 @@ export default {
   },
   methods: {
     async putDictionaryEntry() {
-      const updatedEntry = {
-        title: this.entry.title,
-        description: this.entry.description,
-        active: this.entry.active,
-      };
-      await fetch(
-        `${process.env.VUE_APP_API_URL}/entries/` + this.$route.params.id,
-        {
-          method: "PUT",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify(updatedEntry),
-        }
+      if (
+        this.entry.title.length === 0 ||
+        this.entry.description.length === 0
+      ) {
+        alert("Titel & Description müssen ausgefüllt werden!");
+      } else {
+        const updatedEntry = {
+          title: this.entry.title,
+          description: this.entry.description,
+          active: this.entry.active,
+        };
+        await fetch(
+          `${process.env.VUE_APP_API_URL}/entries/` + this.$route.params.id,
+          {
+            method: "PUT",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify(updatedEntry),
+          }
+        );
+      }
+    },
+  },
+  computed: {
+    isDisabled() {
+      return (
+        this.entry.title.length === 0 || this.entry.description.length === 0
       );
     },
   },
