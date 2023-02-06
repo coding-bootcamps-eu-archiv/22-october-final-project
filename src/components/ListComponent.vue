@@ -137,7 +137,7 @@ p {
 
 h3 {
   margin-block-end: 8px;
-  font-size: 16px;
+  font-size: 32px;
 }
 @media screen and (max-width: 768px) {
   h3 {
@@ -152,7 +152,7 @@ p {
 
 p,
 span {
-  font-size: 12px;
+  font-size: 20px;
 }
 @media screen and (max-width: 768px) {
   p {
