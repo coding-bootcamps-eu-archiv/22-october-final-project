@@ -84,7 +84,14 @@ p:after {
 }
 h2 {
   font-family: "Montserrat", sans-serif;
+  font-size: 26px;
 }
+@media screen and (max-width: 768px) {
+  h2 {
+    font-size: 14px;
+  }
+}
+
 input,
 .tiptap-input {
   border: 2px solid #6a1cc3;
@@ -95,6 +102,12 @@ input,
   width: 100%;
   padding-left: 1rem;
 }
+@media screen and (max-width: 768px) {
+  .title-input {
+    margin-bottom: 12px;
+  }
+}
+
 .button-border {
   display: flex;
   position: absolute;
@@ -115,6 +128,7 @@ input[type="text"]:focus {
   grid-template-columns: 1em auto;
   gap: 0.5em;
 }
+
 input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
@@ -147,5 +161,10 @@ input[type="checkbox"]:checked::before {
 
 .new-entry {
   font-size: 18px;
+}
+@media screen and (max-width: 768px) {
+  .new-entry {
+    font-size: 16px;
+  }
 }
 </style>

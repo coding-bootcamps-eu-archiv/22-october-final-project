@@ -80,9 +80,17 @@ h3 {
   font-family: "Montserrat", sans-serif;
 }
 
+h2 {
+  font-size: 36px;
+  margin-top: 80px;
+}
+
+h3 {
+  font-size: 26px;
+}
+
 .heading-title {
   color: #6a1cc3;
-  font-size: 1.5rem;
 }
 input,
 .tiptap-input {

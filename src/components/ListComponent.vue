@@ -86,7 +86,22 @@ export default {
 }
 
 ul {
-  list-style-type: none;
+  /* list-style-type: none; */
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  width: 40%;
+}
+@media screen and (max-width: 768px) {
+  ul {
+    width: 80%;
+  }
 }
 
 li {
@@ -94,6 +109,11 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+@media screen and (max-width: 768px) {
+  li {
+    margin-bottom: 12px;
+  }
 }
 
 .entry-box {
@@ -119,6 +139,12 @@ h3 {
   margin-block-end: 8px;
   font-size: 16px;
 }
+@media screen and (max-width: 768px) {
+  h3 {
+    margin-block-end: 8px;
+    font-size: 16px;
+  }
+}
 
 p {
   margin-block-start: 8px;
@@ -126,6 +152,12 @@ p {
 
 p {
   font-size: 12px;
+}
+@media screen and (max-width: 768px) {
+  p {
+    margin-block-start: 12px;
+    font-size: 12px;
+  }
 }
 
 .date {

@@ -23,6 +23,13 @@ button {
   transition: all 0.5s;
   margin: 0px 5px 0px 5px;
 }
+@media screen and (max-width: 768px) {
+  button {
+    font-size: 20px;
+    padding-inline: 20px;
+    padding-block: 8px;
+  }
+}
 button:hover {
   background-color: #6a1cc3;
   color: #fbfbfb;
