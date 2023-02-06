@@ -20,8 +20,12 @@
           />
           Active</label
         >
-        <router-link :disabled="isDisabled" to="/Admin"
-          ><ButtonComponent buttonText="Submit" @click="putDictionaryEntry"
+        <router-link to="/Admin"
+          ><ButtonComponent
+            class="disabled"
+            :disabled="isDisabled"
+            buttonText="Submit"
+            @click="putDictionaryEntry"
         /></router-link>
         <router-link to="/Admin"
           ><ButtonComponent buttonText="Cancel"
@@ -174,5 +178,11 @@ input[type="checkbox"]:checked::before {
 }
 input[type="text"]:focus {
   outline: 1px solid #6a1cc3;
+}
+
+.disabled:disabled {
+  color: grey;
+  border: 3px solid grey;
+  box-shadow: 2px 2px 0px 0px grey;
 }
 </style>
