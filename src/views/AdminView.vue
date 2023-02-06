@@ -215,7 +215,7 @@ p {
 
 h3 {
   margin-block-end: 8px;
-  font-size: 16px;
+  font-size: 32px;
 }
 @media screen and (max-width: 768px) {
   h3 {
