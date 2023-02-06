@@ -41,11 +41,9 @@
       redo
     </button>
   </div>
-  <editor-content
-    class="description-field"
-    v-model="content"
-    :editor="editor"
-  />
+  <editor-content :editor="editor" />
+  <!-- class="description-field" -->
+  <!-- v-model="content" -->
 </template>
 
 <script>
@@ -94,7 +92,7 @@ export default {
           openOnClick: false,
         }),
       ],
-      content: "<p>Texteingabe</p>",
+      content: this.modelValue,
       onUpdate: () => {
         // HTML
         this.$emit("update:modelValue", this.editor.getHTML());
