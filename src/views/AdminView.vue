@@ -35,7 +35,7 @@
     </div>
   </form>
   <div v-if="searchResults.length === 0">
-    <ListComponent v-if="searchResults.length === 0" />
+    <ListComponent class="list" v-if="searchResults.length === 0" />
   </div>
   <div v-else class="list">
     <h2 class="search-results">Search results:</h2>
@@ -125,8 +125,19 @@ export default {
 .create {
   position: absolute;
   right: 20px;
+  width: 60px;
 }
 
+@media screen and (min-width: 769px) {
+  .create {
+    top: 425px;
+  }
+}
+@media screen and (min-width: 1052px) {
+  .create {
+    top: 355px;
+  }
+}
 .list {
   margin-top: 124px;
 }
