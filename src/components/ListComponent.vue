@@ -3,7 +3,7 @@
     <li v-for="entries in apiState" :key="entries.id">
       <div class="entry-box left">
         <h3 v-html="entries.title"></h3>
-        <p v-html="entries.description"></p>
+        <p v-html="entries.active"></p>
       </div>
       <div>
         <ButtonComponent
@@ -150,7 +150,8 @@ p {
   margin-block-start: 8px;
 }
 
-p {
+p,
+span {
   font-size: 12px;
 }
 @media screen and (max-width: 768px) {
