@@ -18,7 +18,7 @@
         Active</label
       >
       <ButtonComponent
-        class="new-entry"
+        class="new-entry disabled"
         buttonText="New entry"
         @click="postDictionaryEntry"
         :disabled="isDisabled"
@@ -26,6 +26,7 @@
       <router-link to="/Admin"
         ><ButtonComponent
           buttonText="Submit"
+          class="disabled"
           @click="postDictionaryEntry"
           :disabled="isDisabled"
       /></router-link>
@@ -47,7 +48,6 @@ export default {
   },
   methods: {
     async postDictionaryEntry() {
-      console.log(this.description.length);
       const newEntry = {
         title: this.title,
         description: this.description,
@@ -64,10 +64,11 @@ export default {
       this.title = "";
       this.description = "";
     },
-    setStatus() {
-      return !this.active;
-    },
   },
+  setStatus() {
+    return !this.active;
+  },
+
   computed: {
     isDisabled() {
       return this.title.length === 0 || this.description.length === 0;
@@ -166,5 +167,10 @@ input[type="checkbox"]:checked::before {
   .new-entry {
     font-size: 16px;
   }
+}
+.disabled:disabled {
+  color: grey;
+  border: 3px solid grey;
+  box-shadow: 2px 2px 0px 0px grey;
 }
 </style>
